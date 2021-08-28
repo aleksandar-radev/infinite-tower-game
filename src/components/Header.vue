@@ -1,8 +1,8 @@
 <template lang="">
 <div class="bg-red-400">
   <ul class="grid grid-cols-5">
-    <li>Gold</li>
-    <li>crystals</li>
+    <li>Gold {{ gold }}</li>
+    <li>crystals {{ crystals }}</li>
     <li>level</li>
     <li>soul lvl</li>
     <li>rebirth stones</li>
@@ -21,8 +21,9 @@ export default {
   data () {
     
     return {
-      gold: this.$store.misc.gold,
-      crystals: this.$store.misc.crystals
+      gold: this.$x.misc.gold,
+      crystals: this.$x.misc.crystals,
+      level: this.$x.player.level
     }
   },
   created () {

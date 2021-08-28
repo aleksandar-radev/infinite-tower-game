@@ -1,5 +1,5 @@
 
 export default {
-  activeView: 'battle',
+  active: 'Battle',
   
 }

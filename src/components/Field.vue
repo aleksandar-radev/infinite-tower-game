@@ -1,20 +1,27 @@
 <template lang="">
 <div class="bg-green-400">
-  asdf
+  <component :is="getActiveField()"></component>
 </div>
 </template>
 
 <script>
-//  import MenuItem from './GameHeaderMenuItem.vue'
+import Battle from './fields/Battle.vue'
 
 export default {
   name: 'Field',
-  components: {},
+  components: {
+    Battle,
+  },
   props: {},
-  methods: {},
+  methods: {
+    getActiveField () {
+      return this.activeField
+    }
+  },
   data () {
-    this.$store.player.dmg = 126
-    return {}
+    return {
+      activeField: this.$x.dom.active
+    }
   },
   created () {
     return {}
