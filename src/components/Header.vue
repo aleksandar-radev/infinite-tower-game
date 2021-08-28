@@ -1,5 +1,5 @@
 <template lang="">
-<div>
+<div class="bg-red-400">
   <ul class="grid grid-cols-5">
     <li>Gold</li>
     <li>crystals</li>
@@ -19,7 +19,11 @@ export default {
   props: {},
   methods: {},
   data () {
-    return {}
+    
+    return {
+      gold: this.$store.misc.gold,
+      crystals: this.$store.misc.crystals
+    }
   },
   created () {
     return {}
