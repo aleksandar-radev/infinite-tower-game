@@ -4,5 +4,5 @@ import './index.css'
 import store from './store'
 
 const app = createApp(App)
-app.config.globalProperties.$store = store
+app.config.globalProperties.$x = store
 app.mount('#app')
