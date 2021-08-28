@@ -1,1 +1,1 @@
-# InfiniteTowerGame
+# infinite-tower-game
