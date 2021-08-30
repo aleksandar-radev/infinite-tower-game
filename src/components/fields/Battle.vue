@@ -9,26 +9,39 @@
     </div>
 
 
-    <div class="grid grid-rows-3 bg-purple-200">
-      <div>{{ player.name }}</div>
-      <div>icon</div>
+    <div class="grid grid-rows-3 bg-purple-200" style="grid-template-rows: 15% 50% 35%">
+      <div class="text-center">{{ player.name }}</div>
+
+      <div class="bg-pink-500 w-40 h-40 rounded-full justify-self-center"></div>
+
       <div class="grid justify-center">
         <div :class="$style.stat" class="bg-green-600">hp</div>
         <div :class="$style.stat" class="bg-blue-500">mp</div>
+        <div :class="$style.stat" class="grid">
+          <div class="absolute">Atack speed</div>
+          <div class="apsBar h-full" @animationiteration="loll"></div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="grid grid-rows-3 bg-purple-200" style="grid-template-rows: 15% 50% 35%">
+      <div class="text-center">{{ "enemy" }}</div>
+
+      <div class="bg-pink-500 w-40 h-40 rounded-full justify-self-center"></div>
+
+      <div class="grid justify-center">
+        <div :class="$style.stat" class="bg-green-600">hp</div>
+        <div :class="$style.stat" class="bg-blue-500">skill</div>
         <div :class="$style.stat" class="bg-yellow-300">atack speed</div>
       </div>
-
-
-    </div>
-    <div>
-      {{ enemy.dmg }}
-      enemy
     </div>
 
 
     <div class="col-span-2">
       skills
-    </div>0
+    </div>
 
   </div>
 
@@ -47,8 +60,11 @@ export default {
   components: {},
   props: {},
   methods: {
+    loll() {
+      console.log('asdfa')
+    },
     startBattle() {
-      this.all.startBattle();
+      this.all.startBattle()
     },
     stopBattle() {
       this.all.stopBattle();
@@ -57,9 +73,11 @@ export default {
   data() {
     const all = this.$x
     const player = all.player
+    const enemy = all.enemy
     return {
       all,
-      player
+      player,
+      enemy
     };
   },
   created() {
@@ -68,9 +86,6 @@ export default {
   computed: {
     isBattleActive() {
       return this.all.isBattleActive;
-    },
-    enemy() {
-      return this.all.enemies.getRandomEnemy()
     }
   }
 };
@@ -78,8 +93,29 @@ export default {
 
 <style module lang="scss">
 .stat {
+  height: 2rem;
   width: 13rem;
-  margin: 1px;
+  margin: 4px;
   text-align: center;
+}
+</style>
+
+<style>
+.apsBar {
+  animation-duration: 1s;
+  animation-name: apsBar;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes apsBar {
+  from {
+    width: 0;
+    background: red;
+  }
+  to {
+    width: 13rem;
+    background: yellow;
+  }
 }
 </style>
