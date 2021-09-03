@@ -14,25 +14,25 @@ export default {
   dom: reactive(dom),
   startBattle () {
     this.isBattleActive = true
-    
-    
-    this.fighting = setInterval(() => {
-      // document.querySelector('.apsBar').addEventListener('animationend', () => {
-      //   console.log("END")
-      //   this.atack()
-      // })
-     }, 1000)
-    console.log(this.fighting)
+
   },
   stopBattle (mainType) {
     clearInterval(this.fighting)
     this.isBattleActive = false
     this.fighting = null
+    this.player.reset()
+    this.enemy = this.getRandomEnemy()
+    this.enemies.resetFloor()
   },
-  atack() {
-    console.log('hit')
+  atack(atacker, defender) {
+    player.hp--
+    defender.hp -= atacker.dmg
   },
-  getEnemy() {
-    this.enemies.getRandomEnemy()
+  getRandomEnemy() {
+    this.enemy = this.enemies.getRandomEnemy()
+    return this.enemy
+  },
+  getFloorLevel() {
+    return this.enemies.constructor.floorLevel
   }
 }

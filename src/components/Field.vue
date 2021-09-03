@@ -20,7 +20,7 @@ export default {
   },
   data () {
     return {
-      activeField: this.$x.dom.active
+      activeField: this.$x.dom.activeField
     }
   },
   created () {

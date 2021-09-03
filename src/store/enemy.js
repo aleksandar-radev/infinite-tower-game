@@ -1,20 +1,40 @@
+
+const stat = [
+  {
+    name: 'Goro',
+    totalHp: 334,
+    hp: 70,
+    dmg: 133
+  },
+  {
+    name: 'flint',
+    totalHp: 334,
+    hp: 37,
+    dmg: 2
+  },
+]
+
 class Enemy {
   static level = 1234324
   constructor(props) {
-    this.dmg = props.dmg
+    Object.assign(this, props)
   }
 }
 
-const enemies = {
-  assasin: new Enemy({
-    dmg: 13
-  }),
-  fighter: new Enemy({
-    dmg: 2
-  }),
+class Enemies {
+  static floorLevel = 1
+  constructor(enemies) {
+    Object.assign(this, enemies)
+  }
   getRandomEnemy () {
-    return this.assasin
+    const rand = Math.floor(Math.random() * Object.keys(this).length)
+    return new Enemy(this[rand])
+  }
+  resetFloor() {
+    this.constructor.floorLevel = 1
   }
 }
 
-export { Enemy, enemies }
+const enemies = new Enemies(stat)
+
+export { enemies }

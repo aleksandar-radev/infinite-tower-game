@@ -1,5 +1,5 @@
 
 export default {
-  active: 'Battle',
+  activeField: 'Battle',
   
 }
