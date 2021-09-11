@@ -15,12 +15,12 @@ export default {
   props: {},
   methods: {
     getActiveField () {
-      return this.activeField
+      return this.$x.dom.activeField
     }
   },
   data () {
     return {
-      activeField: this.$x.dom.activeField
+      
     }
   },
   created () {

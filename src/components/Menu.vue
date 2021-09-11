@@ -1,8 +1,8 @@
 <template lang="">
 <div class="bg-blue-400">
   <ul>
-    <li>batle</li>
-    <li>asdf</li>
+    <li>Battle</li>
+    <li @click="setActiveField" >GoldUpgrades</li>
     <li>asdf</li>
     <li>asdfasdf</li>
     <li>asdfasdf</li>
@@ -14,13 +14,17 @@
 </template>
 
 <script>
-//  import MenuItem from './GameHeaderMenuItem.vue'
 
 export default {
   name: 'Menu',
   components: {},
   props: {},
-  methods: {},
+  methods: {
+    setActiveField() {
+      console.log(this.$x.dom.activeField)
+      this.$x.dom.setActiveField('GoldUpgrades')
+    }
+  },
   data () {
     return {}
   },
