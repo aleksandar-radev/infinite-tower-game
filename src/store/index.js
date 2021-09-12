@@ -12,12 +12,14 @@ export default {
   enemies: reactive(enemies),
   enemy: reactive(enemies.getRandomEnemy()),
   dom: reactive(dom),
+  floor: 1,
   startBattle () {
     this.isBattleActive = true
     this.enemy = this.getRandomEnemy()
   },
   stopBattle (mainType) {
     clearInterval(this.fighting)
+    this.floor = 1
     this.enemy = null
     this.isBattleActive = false
     this.fighting = null
@@ -25,7 +27,6 @@ export default {
     this.enemies.resetFloor()
   },
   atack(atacker, defender) {
-    player.hp--
     defender.hp -= atacker.dmg
   },
   getRandomEnemy() {
@@ -33,6 +34,6 @@ export default {
     return this.enemy
   },
   getFloorLevel() {
-    return this.enemies.constructor.floorLevel
+    return this.floor
   }
 }

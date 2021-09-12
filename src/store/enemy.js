@@ -22,16 +22,12 @@ class Enemy {
 }
 
 class Enemies {
-  static floorLevel = 1
   constructor(enemies) {
     Object.assign(this, enemies)
   }
   getRandomEnemy () {
     const rand = Math.floor(Math.random() * Object.keys(this).length)
     return new Enemy(this[rand])
-  }
-  resetFloor() {
-    this.constructor.floorLevel = 1
   }
 }
 

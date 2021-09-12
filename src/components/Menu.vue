@@ -1,15 +1,8 @@
 <template lang="">
 <div class="bg-blue-400">
-  <ul>
-    <li>Battle</li>
-    <li @click="setActiveField" >GoldUpgrades</li>
-    <li>asdf</li>
-    <li>asdfasdf</li>
-    <li>asdfasdf</li>
-    <li>asdfasdf</li>
-    <li>asdfasdf</li>
-    <li>asdfasdf</li>
-  </ul>
+  <div v-for="field in $x.dom.fields" @click="setActiveField(field)">
+    {{ field }}
+  </div>
 </div>
 </template>
 
@@ -20,9 +13,9 @@ export default {
   components: {},
   props: {},
   methods: {
-    setActiveField() {
-      console.log(this.$x.dom.activeField)
-      this.$x.dom.setActiveField('GoldUpgrades')
+    setActiveField(field) {
+      this.$x.stopBattle()
+      this.$x.dom.setActiveField(field)
     }
   },
   data () {

@@ -1,14 +1,13 @@
 <template lang="">
 <div>
-  Gold Upgrades
+  stat
 </div>
 </template>
 
 <script>
-//  import MenuItem from './GameHeaderMenuItem.vue'
 
 export default {
-  name: 'GoldUpgrades',
+  name: 'Statistics',
   components: {},
   props: {},
   methods: {},

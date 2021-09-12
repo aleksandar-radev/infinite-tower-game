@@ -6,15 +6,20 @@
 
 <script>
 import Battle from './fields/Battle.vue'
+import GoldUpgrades from './fields/GoldUpgrades.vue'
+import Statistics from './fields/Statistics.vue'
 
 export default {
   name: 'Field',
   components: {
     Battle,
+    GoldUpgrades,
+    Statistics
   },
   props: {},
   methods: {
     getActiveField () {
+      // return 'GoldUpgrades'
       return this.$x.dom.activeField
     }
   },

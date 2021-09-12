@@ -4,6 +4,7 @@ export default {
   fields: [
     'Battle',
     'GoldUpgrades',
+    'Statistics',
   ],
   setActiveField(field) {
     this.activeField = field

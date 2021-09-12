@@ -65,6 +65,7 @@ export default {
     atack(atacker, defender) {
       this.all.atack(atacker, defender)
       if(defender.hp <= 0) {
+        this.all.floor++
         this.enemy = this.all.getRandomEnemy()
       }
     }
