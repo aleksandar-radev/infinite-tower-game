@@ -14,14 +14,14 @@ export default {
   dom: reactive(dom),
   startBattle () {
     this.isBattleActive = true
-
+    this.enemy = this.getRandomEnemy()
   },
   stopBattle (mainType) {
     clearInterval(this.fighting)
+    this.enemy = null
     this.isBattleActive = false
     this.fighting = null
     this.player.reset()
-    this.enemy = this.getRandomEnemy()
     this.enemies.resetFloor()
   },
   atack(atacker, defender) {

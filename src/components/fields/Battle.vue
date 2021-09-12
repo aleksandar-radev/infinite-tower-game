@@ -9,32 +9,32 @@
     </div>
 
     <div class="grid grid-rows-3 bg-purple-200" style="grid-template-rows: 15% 50% 35%">
-      <div class="text-center">{{ player.name }}</div>
+      <div class="text-center">{{ all.player.name }}</div>
 
       <div class="bg-pink-500 w-40 h-40 rounded-full justify-self-center"></div>
 
       <div class="grid justify-center">
         <div :class="$style.stat" class="bg-green-600" 
-        :style="`background: linear-gradient(90deg, #FFC0CB ${player.hp / player.totalHp * 100}%, rgba(221, 214, 254, var(--tw-bg-opacity)) 0%)`">
-        {{ `${player.hp} / ${player.totalHp}` }} HP
+        :style="`background: linear-gradient(90deg, #FFC0CB ${all.player.hp / all.player.totalHp * 100}%, rgba(221, 214, 254, var(--tw-bg-opacity)) 0%)`">
+        {{ `${all.player.hp} / ${all.player.totalHp}` }} HP
         </div>
-        <div :class="$style.stat" class="bg-blue-500">{{ `${player.currentMp} / ${player.mp}` }} MP</div>
+        <div :class="$style.stat" class="bg-blue-500">{{ `${all.player.currentMp} / ${all.player.mp}` }} MP</div>
         <div :class="$style.stat" class="grid">
           <div class="absolute">Atack speed</div>
-          <div class="apsBar h-full" :style="`animation-duration: ${player.aps}ms`" @animationiteration="atack(player, enemy)"></div>
+          <div class="apsBar h-full" :style="`animation-duration: ${all.player.aps}ms`" @animationiteration="atack(all.player, all.enemy)"></div>
         </div>
       </div>
     </div>
 
     <div class="grid grid-rows-3 bg-purple-200" style="grid-template-rows: 15% 50% 35%">
-      <div class="text-center">{{ enemy.name }}</div>
+      <div class="text-center">{{ all.enemy.name }}</div>
 
       <div class="bg-pink-500 w-40 h-40 rounded-full justify-self-center"></div>
 
       <div class="grid justify-center">
         <div :class="$style.stat" class="bg-green-600"
-        :style="`background: linear-gradient(90deg, #FFC0CB ${enemy.hp / enemy.totalHp * 100}%, rgba(221, 214, 254, var(--tw-bg-opacity)) 0%)`">
-        {{ `${enemy.hp} / ${enemy.totalHp}` }} HP
+        :style="`background: linear-gradient(90deg, #FFC0CB ${all.enemy.hp / all.enemy.totalHp * 100}%, rgba(221, 214, 254, var(--tw-bg-opacity)) 0%)`">
+        {{ `${all.enemy.hp} / ${all.enemy.totalHp}` }} HP
         </div>
         <div :class="$style.stat" class="bg-blue-500">skill</div>
         <div :class="$style.stat" class="bg-yellow-300">atack speed</div>
@@ -71,12 +71,8 @@ export default {
   },
   data() {
     const all = this.$x
-    const player = all.player
-    const enemy = all.enemy
     return {
-      all,
-      player,
-      enemy
+      all
     };
   },
   created() {
