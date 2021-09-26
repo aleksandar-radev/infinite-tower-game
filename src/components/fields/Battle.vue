@@ -64,10 +64,22 @@ export default {
   methods: {
     atack(atacker, defender) {
       this.all.atack(atacker, defender)
+      this.showDmg(atacker.dmg)
       if(defender.hp <= 0) {
         this.all.floor++
         this.enemy = this.all.getRandomEnemy()
       }
+    },
+    showDmg(dmg) {
+      console.log(this.$el)
+      const dmgSpan = document.createElement('span')
+      dmgSpan.classList.add('absolute', 'damage-float')
+      dmgSpan.style.left = '800px'
+      dmgSpan.style.top = '400px'
+      dmgSpan.style.opacity = '0'
+      dmgSpan.style.animation = 'damage-float 2s linear alternate 1'
+      dmgSpan.textContent = dmg
+      this.$el.appendChild(dmgSpan)
     }
   },
   data() {
@@ -98,9 +110,11 @@ export default {
 
 <style>
 .apsBar {
-  animation-name: apsBar;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  /* animation-name: apsBar; */
+  /* animation-delay: 1s; */
+  /* animation-iteration-count: infinite;
+  animation-timing-function: linear; */
+  animation: apsBar 1s linear 1s infinite;
 }
 
 @keyframes apsBar {
@@ -113,4 +127,16 @@ export default {
     background: yellow;
   }
 }
+
+@keyframes damage-float {
+  0% {  
+    transform: translateY(0px);
+     opacity: 1;
+  }
+  100% {
+    transform: translateY(-100px);
+     opacity: 0.3;
+  }
+}
+
 </style>
