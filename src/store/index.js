@@ -1,8 +1,8 @@
-import { player } from './player'
-import { misc } from './misc'
-import { enemies } from './enemy'
-import dom from './dom'
 import { reactive } from 'vue'
+import dom from './dom'
+import { enemies } from './enemy'
+import { misc } from './misc'
+import { player } from './player'
 
 export default {
   isBattleActive: false,
@@ -18,13 +18,17 @@ export default {
     this.enemy = this.getRandomEnemy()
   },
   stopBattle (mainType) {
-    clearInterval(this.fighting)
-    this.floor = 1
-    this.enemy = null
-    this.isBattleActive = false
-    this.fighting = null
-    this.player.reset()
-    this.enemies.resetFloor()
+    if (this.isBattleActive && confirm("Are you sure you want to stop the fight? \n \n " +
+     "You will lose your progress")) {
+      
+      clearInterval(this.fighting)
+      this.floor = 1
+      this.enemy = null
+      this.isBattleActive = false
+      this.fighting = null
+      this.player.reset()
+    }
+    // this.enemies.resetFloor()
   },
   atack(atacker, defender) {
     defender.hp -= atacker.dmg
